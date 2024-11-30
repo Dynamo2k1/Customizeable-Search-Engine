@@ -39,7 +39,7 @@ Follow these steps to set up the application on your local machine:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/username/SearchEngine.git
+   git clone https://github.com/dynamo2k1/SearchEngine.git
    cd SearchEngine
    ```
 
