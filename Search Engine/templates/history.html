@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search History</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>Search Engine</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/history">History</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2>Your Search History</h2>
+        {% if history %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Query</th>
+                    <th>Category</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in history %}
+                <tr>
+                    <td>{{ record.query }}</td>
+                    <td>{{ record.category }}</td>
+                    <td>{{ record.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No search history available.</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>© 2024 Custom Search Engine. All rights reserved.</p>
+    </footer>
+</body>
+</html>

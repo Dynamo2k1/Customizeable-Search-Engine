@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pickaboo</title>
+    <link rel="stylesheet" href="/static/home.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <button id="theme-toggle">🌙</button>
+            <h1>Search Engine</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/history">Search History</a>
+            </nav>
+        </div>
+    </header>
+    <main class="hero">
+        <h2>Welcome to the Custom Search Engine made by Rana Uzair Ahmad</h2>
+        <p>Search specific websites for the content you need.</p>
+        <form action="/search" method="get" class="search-form">
+            <input type="text" name="query" placeholder="Enter your search query (e.g., AI, Cybersecurity)" required>
+            <select name="category" required class="gradient-dropdown search-category">
+                <option value="" disabled selected>Select Category</option>
+                <option value="blog">Blog</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="news">News</option>
+                <option value="technology">Technology</option>
+                <option value="social_media">Social Media</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="general">General</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
+        
+        <div class="quick-shortcuts gradient-buttons">
+            <button onclick="window.open('https://www.google.com')"><i class="fab fa-google"></i> Google</button>
+            <button onclick="window.open('https://www.twitter.com')"><i class="fab fa-twitter"></i> Twitter</button>
+            <button onclick="window.open('https://www.amazon.com')"><i class="fab fa-amazon"></i> Amazon</button>
+            <button onclick="window.open('https://www.reddit.com')"><i class="fab fa-reddit"></i> Reddit</button>
+            <button onclick="window.open('https://www.medium.com')"><i class="fab fa-medium"></i> Medium</button>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('#theme-toggle');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+
+            document.body.setAttribute('data-theme', currentTheme);
+            toggleButton.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+
+            toggleButton.addEventListener('click', function() {
+                const theme = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                document.body.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                toggleButton.textContent = theme === 'dark' ? '☀️' : '🌙';
+            });
+        });
+    </script>
+        <footer>
+            <p>© 2024 Custom Search Engine. All rights reserved.</p>
+        </footer>
+</body>
+</html>

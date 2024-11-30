@@ -1,0 +1,263 @@
+:root {
+    --gradient-color: linear-gradient(90deg, #4facfe, #5c67fa);
+    --hover-gradient-color: linear-gradient(90deg, #5c67fa, #4facfe);
+    --background-color: #f4f4f9;
+    --dark-background-color: #1e1e2f;
+    --text-color: #333;
+    --light-text-color: #f4f4f9;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: #ccc;
+    --button-bg: linear-gradient(90deg, #4facfe, #5c67fa);
+    --button-hover-bg: linear-gradient(90deg, #5c67fa, #4facfe);
+    --footer-bg: #1a1a2e;
+    --footer-text-color: #fff;
+}
+
+/* Dark Mode Variables */
+body[data-theme="dark"] {
+    --background-color: #1e1e2f;
+    --text-color: #f4f4f9;
+    --dropdown-bg: #333;
+    --dropdown-border: #555;
+    --footer-bg: #0d0d1a;
+    --footer-text-color: #ccc;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full height of viewport */
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Header Styles */
+header {
+    background: var(--gradient-color);
+    color: white;
+    padding: 10px 20px;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.navbar nav a:hover {
+    text-decoration: underline;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: radial-gradient(circle, #f4f4f9, #333);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out; 
+}
+
+#theme-toggle:hover {
+    background: radial-gradient(circle, #f4f4f9, #333); 
+    transform: scale(1.2); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+}
+
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-form input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--dropdown-border);
+    background: var(--dropdown-bg);
+    width: 500px;
+    color: var(--text-color);
+}
+
+.search-form select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--dropdown-border);
+    background: var(--dropdown-bg);
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background: var(--button-bg);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.search-form button:hover {
+    transform: scale(1.05);
+    background: var(--button-hover-bg);
+}
+#search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background: var(--button-bg);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+/* Hover effect for valid input */
+#search-button:hover {
+    transform: scale(1.05);
+    background: var(--button-hover-bg);
+}
+
+/* Animation for moving the button */
+@keyframes moveButton {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-50px);
+    }
+    50% {
+        transform: translateX(50px);
+    }
+    75% {
+        transform: translateX(-25px);
+    }
+}
+
+/* Apply the animation when input is empty */
+#search-button.moving {
+    animation: moveButton 0.5s ease-in-out;
+    background: red;
+    color: white;
+}
+
+/* Quick Shortcuts Section */
+.quick-shortcuts {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.quick-shortcuts h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.quick-shortcuts button {
+    background: var(--button-bg);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.quick-shortcuts button:hover {
+    transform: scale(1.1);
+    background: var(--button-hover-bg);
+}
+
+.quick-shortcuts button i {
+    margin-right: 5px;
+}
+
+/* Footer Styles */
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--footer-text-color);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer .social-icons {
+    margin-top: 10px;
+}
+
+footer .social-icons i {
+    margin: 0 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+footer .social-icons i:hover {
+    color: var(--button-hover-bg);
+}
