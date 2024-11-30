@@ -39,8 +39,8 @@ Follow these steps to set up the application on your local machine:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/dynamo2k1/SearchEngine.git
-   cd SearchEngine
+   git clone https://github.com/Dynamo2k1/Customizeable-Search-Engine.git
+   cd Customizeable-Search-Engine/SearchEngine
    ```
 
 2. **Install Dependencies**:
