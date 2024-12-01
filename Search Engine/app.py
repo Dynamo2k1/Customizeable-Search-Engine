@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, jsonify
 from storage import DBStorage
 from datetime import datetime
 import requests
 import signal
-import csv
 import sys
 
 # Initialize the database and Flask app
@@ -45,23 +44,11 @@ def search():
         return render_template('search.html', query=query, category=category, results=[],
                                error="Please provide both a query and a category.")
 
-    # Save the query to the CSV file
-    csv_file_path = 'search_history.csv'
-    with open(csv_file_path, mode='a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([query, category, datetime.now().strftime('%Y-%m-%d %H:%M:%S')])
-
-    # Load data from the CSV file into the database
+    # Save the query to the database live
     try:
-        with open(csv_file_path, mode='r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                if len(row) >= 2:  # Ensure row has at least query and category
-                    query, category = row[0], row[1]
-                    timestamp = row[2] if len(row) > 2 else datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    db.save_search_query(query, category)
+        db.save_search_query(query, category, datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     except Exception as e:
-        print(f"Error loading data from CSV to DB: {e}")
+        print(f"Error saving search query to DB: {e}")
 
     # Fetch search results from Google Custom Search API
     try:
@@ -75,7 +62,7 @@ def search():
             "entertainment": "site:imdb.com OR site:rottentomatoes.com OR site:netflix.com OR site:hulu.com OR site:disneyplus.com OR site:spotify.com"
         }
         search_sites = category_sites.get(category, "")
-        
+
         start = 1  # Start with the first page
         while len(search_results) < RESULT_COUNT:
             url = f"https://www.googleapis.com/customsearch/v1?key={API_KEY}&cx={CX}&q={query} {search_sites}&start={start}&num=10"
@@ -100,12 +87,13 @@ def search():
     search_results = search_results[:RESULT_COUNT]
 
     return render_template('search.html', query=query, category=category, results=search_results)
+
 @app.route('/history')
 def history():
     try:
         # Retrieve search history from the database
         search_history = db.get_search_history()
-        
+
         # Ensure search_history is converted to a list of dictionaries
         history_list = [
             {"query": record.query, "category": record.category, "timestamp": record.timestamp}
@@ -116,19 +104,6 @@ def history():
     except Exception as e:
         print(f"Error fetching history: {e}")
         return render_template('history.html', history=[], error="Could not fetch search history.")
-
-
-@app.route('/export_history')
-def export_history():
-    # Export search history to a CSV file
-    try:
-        search_history = db.get_search_history()
-        csv_file = './search_history.csv'
-        search_history.to_csv(csv_file, index=False)
-        return send_file(csv_file, as_attachment=True, download_name='search_history.csv')
-    except Exception as e:
-        print(f"Error exporting search history: {e}")
-        return f"Error exporting search history: {e}"
 
 @app.route('/favorites', methods=['GET'])
 def favorites():
