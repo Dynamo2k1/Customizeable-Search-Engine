@@ -1,0 +1,262 @@
+:root {
+    --gradient-color: linear-gradient(90deg, #4facfe, #5c67fa);
+    --hover-gradient-color: linear-gradient(90deg, #5c67fa, #4facfe);
+    --background-color: #f4f4f9;
+    --dark-background-color: #1e1e2f;
+    --text-color: #333;
+    --light-text-color: #f4f4f9;
+    --dropdown-bg: white;
+    --dropdown-border: #ccc;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body[data-theme='dark'] {
+    background: var(--dark-background-color);
+    color: var(--light-text-color);
+}
+
+header{
+    background: var(--gradient-color);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+footer {
+    background-color: #1a1a2e;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.hero, .results {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+.hero, .results {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+.hero p, .results p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+li a {
+    font-size: 18px;
+    color: #0073e6;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-form input, .search-form select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--dropdown-border);
+    background: var(--dropdown-bg);
+    color: var(--text-color);
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+    flex: 1;
+    max-width: 700px;
+    min-width: 400px;
+}
+
+body[data-theme='dark'] .search-form input, 
+body[data-theme='dark'] .search-form select {
+    background: var(--dark-background-color);
+    color: var(--light-text-color);
+}
+
+.search-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background: var(--gradient-color);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.search-form button:hover {
+    transform: scale(1.05);
+    background: var(--hover-gradient-color);
+}
+
+.quick-shortcuts, .gradient-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.quick-shortcuts button, .gradient-buttons button,
+.shortcut-button, #theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    background: var(--gradient-color);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background 0.3s ease-in-out;
+}
+
+.quick-shortcuts button:hover, .gradient-buttons button:hover,
+.shortcut-button:hover, #theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--hover-gradient-color);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #005bb5;
+}
+
+.favorite-btn {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.favorite-btn:hover {
+    background-color: #005bb5;
+}
+
+select:focus {
+    outline: none;
+    border: 2px solid var(--hover-gradient-color);
+}

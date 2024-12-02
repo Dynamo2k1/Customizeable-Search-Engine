@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        async function removeFavorite(favoriteId) {
+            try {
+                const response = await fetch(`/search/remove_favorite/${favoriteId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                const result = await response.json();
+                alert(result.message);
+
+                if (response.ok) {
+                    // Reload the page to reflect the changes
+                    location.reload();
+                }
+            } catch (error) {
+                alert("Failed to remove favorite. Please try again.");
+                console.error("Error removing favorite:", error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1>Search Engine</h1>
+            <nav>
+                <a href="{{ url_for('search.search_page') }}">Home</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('favorites') }}">Favorites</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2>Your Favorites</h2>
+        {% if favorites %}
+        <ul>
+            {% for favorite in favorites %}
+            <li>
+                <a href="{{ favorite.link|escape }}" target="_blank">{{ favorite.title|escape }}</a>
+                <p class="snippet">{{ favorite.snippet|escape }}</p>
+                <p class="source">Saved from Query: "{{ favorite.query|escape }}"</p>
+                <button class="remove-btn" onclick="removeFavorite({{ favorite.id }})">Remove</button>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No favorites saved yet.</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>© 2024 Custom Search Engine. All rights reserved.</p>
+    </footer>
+</body>
+</html>
