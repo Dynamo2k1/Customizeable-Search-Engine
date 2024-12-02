@@ -29,3 +29,17 @@ class SearchHistory(db.Model):
 
     def __repr__(self):
         return f"<SearchHistory {self.query} by User {self.user_id}>"
+
+class Favorite(db.Model):
+    __tablename__ = "favorites"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, nullable=False)
+    query = db.Column(db.String(255), nullable=False)
+    link = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+    snippet = db.Column(db.Text, nullable=True)
+    saved_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+    def __repr__(self):
+        return f"<Favorite {self.title}>"

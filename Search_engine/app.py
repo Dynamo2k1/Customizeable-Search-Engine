@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_session import Session
 from auth import auth_blueprint
 from search import search_blueprint
 from database import db
+from models import Favorite  # Import the Favorite model here
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -24,14 +25,34 @@ app.register_blueprint(search_blueprint, url_prefix="/search")
 # Routes
 @app.route("/")
 def home():
-    if "user_id" in session:
-        return redirect(url_for("search.search_page"))
-    return render_template("index.html")
+    # Redirect to the search page for displaying the home page with the search form
+    return redirect(url_for("search.search_page"))
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/favorites")
+def favorites():
+    if "user_id" not in session:
+        flash("You must be logged in to view your favorites.", "warning")
+        return redirect(url_for("auth.login"))
+
+    # Fetch the user's favorite items from the database
+    user_id = session["user_id"]
+    favorites = db.session.query(Favorite).filter_by(user_id=user_id).all()
+    return render_template("favorites.html", favorites=favorites)
 
 
 @app.route("/logout")
 def logout():
+    # Clears the user session and redirects to the home page
     session.pop("user_id", None)
+    flash("You have been logged out successfully.", "info")
     return redirect(url_for("home"))
 
 
