@@ -1,0 +1,109 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+form input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Button Styles */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.actions .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.actions .btn:hover {
+    background-color: #0056b3;
+}
+
+/* List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+ul li a {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}

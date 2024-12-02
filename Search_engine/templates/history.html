@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Search History</h1>
+        
+        {% if history %}
+            <ul>
+                {% for entry in history %}
+                    <li>
+                        <strong>Query:</strong> {{ entry.query }} <br>
+                        <strong>Date:</strong> {{ entry.searched_at.strftime('%Y-%m-%d %H:%M:%S') }} <br>
+                        <a href="{{ url_for('search.search_page') }}?query={{ entry.query }}">Search Again</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have no search history yet.</p>
+        {% endif %}
+        
+        <p><a href="{{ url_for('search.search_page') }}">Perform a New Search</a></p>
+    </div>
+</body>
+</html>

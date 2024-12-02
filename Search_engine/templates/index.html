@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Search Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Search Engine</h1>
+        <p>Your ultimate tool for searching and organizing web content efficiently.</p>
+        
+        <div class="actions">
+            <a href="{{ url_for('auth.login') }}" class="btn">Login</a>
+            <a href="{{ url_for('auth.register') }}" class="btn">Register</a>
+        </div>
+    </div>
+</body>
+</html>
