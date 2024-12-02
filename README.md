@@ -1,4 +1,3 @@
-
 # 🌐 Search Engine Project
 
 Effortlessly search and organize web content with our user-friendly Search Engine application. With a clean interface and robust backend, this project combines the power of web scraping with intuitive features to provide a seamless user experience.
@@ -8,8 +7,9 @@ Effortlessly search and organize web content with our user-friendly Search Engin
 ## 🚀 Features
 
 ### 🔍 Advanced Search Capabilities
-- Parse content from various websites in real-time.
+- Parse and rank content from various websites in real-time.
 - Designed for blogs, social media, e-commerce platforms, and more.
+- Implement login and personalized features for search history and favorites.
 
 ### 📂 Search History Management
 - Automatically saves your searches for easy retrieval.
@@ -27,7 +27,7 @@ Effortlessly search and organize web content with our user-friendly Search Engin
 ## 🛠️ Technologies Used
 
 - **Framework**: Flask (Python)
-- **Frontend**: HTML5, CSS3
+- **Frontend**: HTML5, CSS3 (located in `static` folder)
 - **Database**: SQLite
 - **Additional Libraries**: All dependencies are listed in `requirements.txt`
 
@@ -40,7 +40,7 @@ Follow these steps to set up the application on your local machine:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Dynamo2k1/Customizeable-Search-Engine.git
-   cd Customizeable-Search-Engine/SearchEngine
+   cd Customizeable-Search-Engine/Search_engine
    ```
 
 2. **Install Dependencies**:
@@ -57,7 +57,7 @@ Follow these steps to set up the application on your local machine:
 
 4. **Access the Application**:
    Open your browser and go to:
-   ```
+   ```plaintext
    http://127.0.0.1:5000/
    ```
 
@@ -90,9 +90,7 @@ We aim to continuously improve and expand the capabilities of this application. 
 
 - **MongoDB Integration**: Transition from SQLite to MongoDB for enhanced scalability and performance.
 - **Dynamic Content Support**: Extend scraping abilities to handle JavaScript-heavy websites.
-- **User Accounts**: Implement login and personalized features for search history and favorites.
 
----
 
 ---
 
@@ -107,6 +105,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 For questions, suggestions, or collaboration, feel free to reach out:
 
 - Email: [dynamo89247@gmail.com](mailto:dynamo89247@gmail.com)
-- GitHub: [Dynamo2k1](https://github.com/dynamo2k1)
-
----
+- GitHub: [Dynamo2k1](https://github.com/Dynamo2k1)
