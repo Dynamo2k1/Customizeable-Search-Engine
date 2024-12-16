@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request, flash, session, redirect, url_for
 from database import db
-from models import SearchHistory, Favorite  # Import the Favorite model
+from models import SearchHistory, Favorite
 from utils import perform_web_scraping_with_categories
+from rankng import rank_search_results
 from json import dumps
 
 search_blueprint = Blueprint("search", __name__)
@@ -20,7 +21,6 @@ def search_page():
         return render_template("home.html")
 
     # Handle the search query and display results
-    search_results = []
     query = request.form.get("query")
     category = request.form.get("category")
 
@@ -28,17 +28,18 @@ def search_page():
         flash("Both search query and category are required.", "danger")
         return redirect(url_for("search.search_page"))
 
-    # Perform the search
+    # Perform the search and rank the results
     search_results = perform_web_scraping_with_categories(query, category, API_KEY, CX)
+    ranked_results = rank_search_results(search_results, query)
 
-    # Save search history
+    # Save ranked search results to search history
     user_id = session["user_id"]
-    history_entry = SearchHistory(user_id=user_id, query=query, results=search_results)
+    history_entry = SearchHistory(user_id=user_id, query=query, results=ranked_results)
     db.session.add(history_entry)
     db.session.commit()
 
     flash("Search completed successfully!", "success")
-    return render_template("search.html", results=search_results, query=query, category=category)
+    return render_template("search.html", results=ranked_results, query=query, category=category)
 
 
 @search_blueprint.route("/history")
@@ -101,6 +102,8 @@ def view_favorites():
     favorites = db.session.query(Favorite).filter_by(user_id=user_id).all()
 
     return render_template("favorites.html", favorites=favorites)
+
+
 @search_blueprint.route("/remove_favorite/<int:favorite_id>", methods=["POST"])
 def remove_favorite(favorite_id):
     if "user_id" not in session:
