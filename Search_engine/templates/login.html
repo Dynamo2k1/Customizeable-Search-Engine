@@ -17,6 +17,7 @@
             <div>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
+                <span class="eye-icon" id="toggle-password-visibility">👁️</span>
             </div>
             <div>
                 <button type="submit">Login</button>
@@ -25,5 +26,17 @@
         <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register here</a>.</p>
     </div>
     <footer><p>© 2024 Seekora. All rights reserved.</p></footer>
+    <script>
+        const passwordField = document.getElementById('password');
+        const togglePasswordVisibility = document.getElementById('toggle-password-visibility');
+
+        togglePasswordVisibility.addEventListener('click', () => {
+            const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+
+            // Change the icon based on visibility
+            togglePasswordVisibility.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+    </script>
 </body>
 </html>
