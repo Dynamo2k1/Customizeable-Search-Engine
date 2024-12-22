@@ -30,7 +30,11 @@ def search_page():
 
     # Perform the search and rank the results
     search_results = perform_web_scraping_with_categories(query, category, API_KEY, CX)
-    ranked_results = rank_search_results(search_results, query)
+    # Prepare documents for TF-IDF calculation
+    documents = [result['snippet'] for result in search_results]
+
+    # Rank results using improved algorithm
+    ranked_results = rank_search_results(search_results, query, documents)
 
     # Save ranked search results to search history
     user_id = session["user_id"]
