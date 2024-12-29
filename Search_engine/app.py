@@ -9,8 +9,8 @@ from models import Favorite  # Import the Favorite model here
 app = Flask(__name__)
 
 # App configuration
-app.config["SECRET_KEY"] = "12358289247"  # Replace with a secure key
-app.config["SESSION_TYPE"] = "filesystem"  # For managing user sessions
+app.config["SECRET_KEY"] = "12358289247" 
+app.config["SESSION_TYPE"] = "filesystem"  
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://dynamo:1590@localhost/search_engine"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
