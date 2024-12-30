@@ -5,8 +5,8 @@ import requests
 
 # Preprocessing: Tokenization
 def tokenize(text):
-    text = text.lower()  # Convert to lowercase
-    text = re.sub(r'[^a-z0-9\\s]', '', text)  # Remove special characters
+    text = text.lower()
+    text = re.sub(r'[^a-z0-9\\s]', '', text)  
     return text.split()
 
 # Remove Stopwords
