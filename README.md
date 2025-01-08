@@ -28,7 +28,7 @@ Effortlessly search and organize web content with our user-friendly Search Engin
 
 - **Framework**: Flask (Python)
 - **Frontend**: HTML5, CSS3 (located in `static` folder)
-- **Database**: SQLite
+- **Database**: PostGreSQL
 - **Additional Libraries**: All dependencies are listed in `requirements.txt`
 
 ---
