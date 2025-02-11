@@ -7,7 +7,7 @@ from json import dumps
 
 search_blueprint = Blueprint("search", __name__)
 
-API_KEY = "AIzaSyBiXTEPooZiuotBUXaipIoMZCCiOFOiUc4"
+API_KEY = "Your_Google_API_Key_here"
 CX = "b213191287aba4aef"
 
 @search_blueprint.route("/", methods=["GET", "POST"])
